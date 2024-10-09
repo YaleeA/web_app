@@ -30,5 +30,5 @@ variable "nginx_port" {
 
 variable "nginx_conf_path" {
   type    = string
-  default = "/home/yaleea/infinity_labs_train/skybox_ex/skybox_assignment/terraform/nginx.conf"  
+  default = "/home/yaleea/infinity_labs_train/skybox_ex/skybox_assignment/web_app/terraform/nginx.conf"  
 }

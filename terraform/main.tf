@@ -42,51 +42,12 @@ resource "docker_container" "web_app" {
 }
 
 
-
-# resource "docker_container" "web_app_1" {  
-#   name  = "web_app_1"
-#   image = docker_image.local_image.name  # Uses output from data source
-
-#   networks_advanced {
-#     name = docker_network.app_network.name
-#   }
-
-#   # Expose port 5000 for Flask app
-#   ports {
-#     internal = 5000
-#     # external = 5001
-#   }
-
-#     healthcheck {
-#     test     = ["CMD", "curl", "-f", "http://localhost:5000"]
-#     interval = "30s"
-#     retries  = 3
-#     start_period = "10s"
-#     timeout  = "5s"
-#   }
-# }
-
-# resource "docker_container" "web_app_2" {  
-#   name  = "web_app_2"
-#   image = docker_image.local_image.name  # Uses output from data source
-
-#   networks_advanced {
-#     name = docker_network.app_network.name
-#   }
-#   # Expose port 5000 for Flask app
-#   ports {
-#     internal = 5000
-#     # external = 5002
-#   }
-
-#     healthcheck {
-#     test     = ["CMD", "curl", "-f", "http://localhost:5000"]
-#     interval = "30s"
-#     retries  = 3
-#     start_period = "10s"
-#     timeout  = "5s"
-#   }
-# }
+resource "local_file" "nginx_conf" {
+  filename = "${path.module}/nginx.conf"
+  content  = templatefile("${path.module}/nginx.conf.tmpl", {
+    web_app_names = var.web_app_names
+  })
+}
 
 resource "docker_image" "nginx" {
   name         = "nginx:${var.nginx_version}"

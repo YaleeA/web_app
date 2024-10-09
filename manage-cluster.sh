@@ -44,14 +44,14 @@ if [ "$action" == "Install" ]; then
   sudo gpasswd -a $USER docker
   newgrp docker
   # docker --version # verify
+
+  # Pull script from GitHub
+  git clone https://github.com/YaleeA/web_app.git
  
 elif [ "$action" == "Start" ]; then
   echo "Starting the cluster"
 
-  # Pull script from GitHub
-  git clone https://github.com/YaleeA/web_app.git
-
-  # # Start cluster
+  # Start cluster
   WORK_DIR="./terraform"
   cd "$WORK_DIR" || exit
   terraform init
