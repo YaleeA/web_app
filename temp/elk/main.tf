@@ -1,5 +1,10 @@
-provider "docker" {
-  # Configure Docker Provider
+terraform {
+  required_providers {
+    docker = {
+      source  = "kreuzwerker/docker"
+      version = "3.0.2"
+    }
+  }
 }
 
 # Create Docker network for ELK stack
@@ -37,7 +42,7 @@ resource "docker_container" "elasticsearch" {
   }
 
   volumes {
-    host_path      = "./elk-config/elasticsearch/elasticsearch.yml"
+    host_path      = abspath("./elk-config/elasticsearch/elasticsearch.yml")
     container_path = "/usr/share/elasticsearch/config/elasticsearch.yml"
   }
 
@@ -67,12 +72,12 @@ resource "docker_container" "logstash" {
   }
 
   volumes {
-    host_path      = "./elk-config/logstash/logstash.conf"
+    host_path      = abspath("./elk-config/logstash/logstash.conf")
     container_path = "/usr/share/logstash/pipeline/logstash.conf"
   }
 
   volumes {
-    host_path      = "./elk-config/logstash/logstash.yml"
+    host_path      = abspath("./elk-config/logstash/logstash.yml")
     container_path = "/usr/share/logstash/config/logstash.yml"
   }
 
@@ -101,7 +106,7 @@ resource "docker_container" "kibana" {
   }
 
   volumes {
-    host_path      = "./elk-config/kibana/kibana.yml"
+    host_path      = abspath("./elk-config/kibana/kibana.yml")
     container_path = "/usr/share/kibana/config/kibana.yml"
   }
 
@@ -127,11 +132,11 @@ resource "docker_container" "filebeat" {
 
   volumes {
     host_path      = "/var/lib/docker/containers"
-    container_path = "/var/lib/docker/containers:ro"
+    container_path = "/var/lib/docker/containers"
   }
 
   volumes {
-    host_path      = "./filebeat.yml"
+    host_path      = abspath("./filebeat.yml")
     container_path = "/usr/share/filebeat/filebeat.yml"
   }
 
