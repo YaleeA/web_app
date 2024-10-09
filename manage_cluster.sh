@@ -16,6 +16,9 @@ if [ "$action" == "Install" ]; then
   # git installation
   sudo apt-get install git -y
 
+  # Pull script from GitHub
+  git clone https://github.com/YaleeA/web_app.git
+
   # terraform installation
   sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
   wget -O- https://apt.releases.hashicorp.com/gpg | \
@@ -42,9 +45,6 @@ if [ "$action" == "Install" ]; then
   sudo groupadd docker
   sudo gpasswd -a $USER docker
   newgrp docker
-
-  # Pull script from GitHub
-  git clone https://github.com/YaleeA/web_app.git
  
 elif [ "$action" == "Start" ]; then
   echo "Starting the cluster"

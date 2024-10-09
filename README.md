@@ -8,6 +8,11 @@ This project provides a bash script to manage the setup, deployment, and health 
 
 Before running this script, ensure that you are using a supported Linux distribution like **Ubuntu** and have administrative privileges (`sudo` access).
 
+Change the premissons of this script to allow it to run
+```bash
+chmod +x manage_cluster.sh
+```
+
 ## 1. Setup Environment and Install Dependencies
 
 To set up the environment and install the necessary dependencies, run the script with the `Install` action. The script will:
