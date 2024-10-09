@@ -1,10 +1,13 @@
 #!/bin/bash
 
 sudo apt-get update 
+sudo apt-get upgrade -y
+
 
 # git installation
 sudo apt-get install git -y
 # git --version # verify
+
 
 # terraform installation
 sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
@@ -18,6 +21,7 @@ https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/
 sudo apt-get install terraform
 # terraform --version # verify
 
+
 # Docker installation
 sudo apt-get install ca-certificates curl -y
 sudo install -m 0755 -d /etc/apt/keyrings
@@ -30,8 +34,63 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update -y
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+sudo groupadd docker
+sudo gpasswd -a $USER docker
+newgrp docker
 # docker --version # verify
 
+
 # Pull script from GitHub
-git pull https://yaleea1996:password@git_hostname.com/my/repository
+git clone https://github.com/YaleeA/web_app.git
+
+
+# # Start cluster
+WORK_DIR="./terraform"
+cd "$WORK_DIR" || exit
+terraform init
+terraform plan -out=tfplan
+terraform apply -auto-approve tfplan
+rm -f tfplan
+echo "Terraform applied successfully!"
+
+
+# Stop cluster
+terraform destroy -auto-approve
+echo "Terraform applied and destroyed successfully!"
+
+
+# Status check
+echo "Listing all running Docker containers:"
+docker ps
+
+
+containers=$(docker ps -aq 2>&1)
+
+if [ -z "$containers" ]; then
+  echo "No containers found."
+  exit 0
+fi
+
+echo "Checking status of containers :"
+for container in $containers; do
+    status=$(docker inspect -f '{{.State.Status}}' $container)
+
+    if [ "$status" == "running" ]; then
+        echo "Container $container is running."
+    else
+        echo "Container $container is not running. Status: $status"
+    fi
+    done
+
+
+echo "Checking health of containers:"
+for container in $containers; do
+    health_status=$(docker inspect -f '{{.State.Health.Status}}' $container)
+    
+    if [ "$health_status" == "none" ]; then
+      echo "No health check defined for container $container."
+    else
+      echo "Health status for container $container: $health_status"
+    fi
+    done
 

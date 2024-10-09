@@ -1,0 +1,28 @@
+INFO - 2024-10-08 21:58:56,041 - Handling request from 127.0.0.1 to / with method GET
+INFO - 2024-10-08 21:58:56,041 - Server hostname: yaleea-VivoBook-ASUSLaptop-X512FA-X512FA
+INFO - 2024-10-08 21:58:56,957 - Handling request from 127.0.0.1 to / with method GET
+INFO - 2024-10-08 21:58:56,957 - Server hostname: yaleea-VivoBook-ASUSLaptop-X512FA-X512FA
+INFO - 2024-10-08 21:59:01,647 - Handling request from 127.0.0.1 to /health with method GET
+INFO - 2024-10-08 21:59:01,648 - Server hostname: yaleea-VivoBook-ASUSLaptop-X512FA-X512FA
+INFO - 2024-10-08 21:59:04,976 - Handling request from 127.0.0.1 to /health with method GET
+INFO - 2024-10-08 21:59:04,977 - Server hostname: yaleea-VivoBook-ASUSLaptop-X512FA-X512FA
+INFO - 2024-10-08 21:59:05,555 - Handling request from 127.0.0.1 to /health with method GET
+INFO - 2024-10-08 21:59:05,555 - Server hostname: yaleea-VivoBook-ASUSLaptop-X512FA-X512FA
+INFO - 2024-10-08 21:59:06,029 - Handling request from 127.0.0.1 to /health with method GET
+INFO - 2024-10-08 21:59:06,029 - Server hostname: yaleea-VivoBook-ASUSLaptop-X512FA-X512FA
+INFO - 2024-10-08 21:59:06,666 - Handling request from 127.0.0.1 to /health with method GET
+INFO - 2024-10-08 21:59:06,667 - Server hostname: yaleea-VivoBook-ASUSLaptop-X512FA-X512FA
+INFO - 2024-10-08 21:59:07,143 - Handling request from 127.0.0.1 to /health with method GET
+INFO - 2024-10-08 21:59:07,143 - Server hostname: yaleea-VivoBook-ASUSLaptop-X512FA-X512FA
+INFO - 2024-10-08 22:01:49,185 - Handling request from 127.0.0.1 to /health with method GET
+INFO - 2024-10-08 22:01:49,186 - status code 200
+INFO - 2024-10-08 22:01:49,186 - Server hostname: yaleea-VivoBook-ASUSLaptop-X512FA-X512FA
+INFO - 2024-10-08 22:01:54,070 - Handling request from 127.0.0.1 to /health with method GET
+INFO - 2024-10-08 22:01:54,071 - status code 200
+INFO - 2024-10-08 22:01:54,071 - Server hostname: yaleea-VivoBook-ASUSLaptop-X512FA-X512FA
+INFO - 2024-10-08 22:01:57,027 - Handling request from 127.0.0.1 to / with method GET
+INFO - 2024-10-08 22:01:57,028 - status code 200
+INFO - 2024-10-08 22:01:57,029 - Server hostname: yaleea-VivoBook-ASUSLaptop-X512FA-X512FA
+INFO - 2024-10-08 22:08:00,044 - Request details: {'client_ip': '127.0.0.1', 'request_method': 'GET', 'request_path': '/', 'request_status_code': 200, 'web_server': 'yaleea-VivoBook-ASUSLaptop-X512FA-X512FA'}
+INFO - 2024-10-08 22:08:03,400 - Request details: {'client_ip': '127.0.0.1', 'request_method': 'GET', 'request_path': '/health', 'request_status_code': 200, 'web_server': 'yaleea-VivoBook-ASUSLaptop-X512FA-X512FA'}
+INFO - 2024-10-08 22:50:11,454 - Request details: {'client_ip': '127.0.0.1', 'request_method': 'GET', 'request_path': '/health', 'request_status_code': 200, 'web_server': 'yaleea-VivoBook-ASUSLaptop-X512FA-X512FA'}
