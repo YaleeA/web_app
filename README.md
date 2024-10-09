@@ -1,6 +1,3 @@
-GPT
-
-Here’s an improved version of the README, along with a breakdown of the changes I made:
 Terraform and Docker Cluster Management Script
 
 GitHub repository: YaleeA/web_app
