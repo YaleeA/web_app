@@ -7,14 +7,14 @@ if [ $# -eq 0 ]; then
   exit 1
 fi
 
-sudo apt-get update 
-sudo apt-get upgrade -y
 
 if [ "$action" == "Install" ]; then
+  sudo apt-get update 
+  sudo apt-get upgrade -y
+
   echo "Installing dependencies"
   # git installation
   sudo apt-get install git -y
-  # git --version # verify
 
   # terraform installation
   sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
@@ -26,7 +26,6 @@ if [ "$action" == "Install" ]; then
   https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
   sudo apt update
   sudo apt-get install terraform
-  # terraform --version # verify
 
   # Docker installation
   sudo apt-get install ca-certificates curl -y
@@ -43,7 +42,6 @@ if [ "$action" == "Install" ]; then
   sudo groupadd docker
   sudo gpasswd -a $USER docker
   newgrp docker
-  # docker --version # verify
 
   # Pull script from GitHub
   git clone https://github.com/YaleeA/web_app.git
@@ -52,7 +50,7 @@ elif [ "$action" == "Start" ]; then
   echo "Starting the cluster"
 
   # Start cluster
-  WORK_DIR="./terraform"
+  WORK_DIR="./web_app/terraform"
   cd "$WORK_DIR" || exit
   terraform init
   terraform plan -out=tfplan
@@ -62,6 +60,8 @@ elif [ "$action" == "Start" ]; then
 
  
 elif [ "$action" == "Stop" ]; then
+  WORK_DIR="./web_app/terraform"
+  cd "$WORK_DIR" || exit
   echo "Stopping the cluster"
 
   # Stop cluster

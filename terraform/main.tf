@@ -72,6 +72,7 @@ resource "docker_container" "nginx" {
 
    volumes {
     host_path    = var.nginx_conf_path
+    # host_path = "${path.module}/nginx.conf"
     container_path = "/etc/nginx/conf.d/nginx.conf"
   }
 
