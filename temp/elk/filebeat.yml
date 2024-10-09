@@ -19,17 +19,17 @@ filebeat.inputs:
 # Below are the input-specific configurations.
 
 # filestream is an input for collecting log messages from files.
-- type: filestream
+- type: container
 
   # Unique ID among all inputs, an ID is required.
-  id: my-filestream-id
+  # id: my-filestream-id
 
   # Change to true to enable this input configuration.
   enabled: true
 
   # Paths that should be crawled and fetched. Glob based paths.
   paths:
-    - /home/ec2-user/logs/*.log
+    - '/var/lib/docker/containers/*/*.log'
     #- c:\programdata\elasticsearch\logs\*
 # Exclude lines. A list of regular expressions to match. It drops the lines that are
   # matching any regular expression from the list.
@@ -154,14 +154,14 @@ setup.kibana:
 # ------------------------------ Logstash Output -------------------------------
 output.logstash:
   # The Logstash hosts
-  hosts: ["172.31.33.96:5044"]
-  ssl.certificate_authorities: ["/home/ec2-user/ca-cert.pem"]
-  ssl.certificate: "/home/ec2-user/server.crt"
-  ssl.key: "/home/ec2-user/server.key"  
-  ssl.enabled: true
+  hosts: ["logstash:5044"]
+  # ssl.certificate_authorities: ["/home/ec2-user/ca-cert.pem"]
+  # ssl.certificate: "/home/ec2-user/server.crt"
+  # ssl.key: "/home/ec2-user/server.key"  
+  # ssl.enabled: true
 #  ssl.client_authentication: none
-  ssl.verification_mode: none
-  protocol: "https"
+  # ssl.verification_mode: none
+  # protocol: "https"
 # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications
   #ssl.certificate_authorities: ["/etc/pki/root/ca.pem"]
