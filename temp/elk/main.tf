@@ -54,6 +54,9 @@ resource "docker_container" "elasticsearch" {
   networks_advanced {
     name = docker_network.elk_network.name
   }
+
+  env = ["discovery.type=single-node", "http.host=0.0.0.0", "transport.host=0.0.0.0", "xpack.security.enabled=false", "xpack.monitoring.enabled=false", "cluster.name=elasticsearch", "bootstrap.memory_lock=true"]
+
 }
 
 # Logstash container
